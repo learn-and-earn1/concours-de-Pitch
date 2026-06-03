@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pitcher Hybride et Fier·e — Concours de Pitch · Forum Innov'Action 2026</title>
+  <meta name="description" content="3 minutes pour tout changer. 5 prix à remporter. Pitcher Hybride et Fier·e — le concours de pitch du Forum Innov'Action 2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bleu:   #1B3A6B;
+      --bleu2:  #0e2147;
+      --or:     #C9A84C;
+      --or2:    #e8c96a;
+      --blanc:  #FFFFFF;
+      --creme:  #FAF8F3;
+      --violet: #6C3483;
+      --texte:  #1a1a2e;
+      --gris:   #F2F0EB;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bleu2);
+      color: var(--blanc);
+      overflow-x: hidden;
+    }
+
+    /* ===== STICKY BAR ===== */
+    .sbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 999;
+      background: rgba(14,33,71,0.97);
+      backdrop-filter: blur(12px);
+      padding: 10px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      transform: translateY(-100%);
+      transition: transform 0.4s ease;
+    }
+    .sbar.show { transform: translateY(0); }
+    .sbar-txt { font-size: 12px; color: rgba(255,255,255,0.6); }
+    .sbar-txt strong { color: var(--or); }
+    .sbar-btn {
+      background: var(--or); color: var(--bleu);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700; font-size: 12px;
+      padding: 8px 20px; border-radius: 2px;
+      text-decoration: none; white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .sbar-btn:hover { background: var(--or2); }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      background: var(--bleu2);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 80px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Fond géométrique */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 120% 80% at 50% -10%, rgba(201,168,76,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 60% at 0% 100%, rgba(27,58,107,0.6) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 50% at 100% 0%, rgba(108,52,131,0.15) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    /* Lignes décoratives */
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(60deg, transparent, transparent 100px, rgba(201,168,76,0.03) 100px, rgba(201,168,76,0.03) 101px),
+        repeating-linear-gradient(-60deg, transparent, transparent 100px, rgba(201,168,76,0.03) 100px, rgba(201,168,76,0.03) 101px);
+      pointer-events: none;
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 860px; }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--or);
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 6px 18px; margin-bottom: 32px;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero-micro {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(16px, 3vw, 22px);
+      letter-spacing: 0.4em;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      animation: fadeUp 0.8s ease 0.1s both;
+    }
+
+    .hero-titre {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(56px, 11vw, 130px);
+      font-weight: 700;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      animation: fadeUp 0.8s ease 0.15s both;
+    }
+
+    .hero-titre .line1 { color: var(--blanc); display: block; }
+    .hero-titre .line2 { color: var(--or); font-style: italic; display: block; }
+    .hero-titre .line3 { color: var(--blanc); display: block; font-size: 65%; opacity: 0.5; }
+
+    .hero-tagline {
+      font-size: clamp(17px, 2.5vw, 24px);
+      color: rgba(255,255,255,0.6);
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      margin: 24px 0 40px;
+      animation: fadeUp 0.8s ease 0.25s both;
+    }
+
+    /* KPIs hero */
+    .hero-kpis {
+      display: flex; gap: 0; justify-content: center;
+      margin-bottom: 44px;
+      animation: fadeUp 0.8s ease 0.3s both;
+      border: 1px solid rgba(201,168,76,0.2);
+    }
+
+    .hero-kpi {
+      padding: 20px 32px;
+      border-right: 1px solid rgba(201,168,76,0.15);
+      text-align: center;
+    }
+    .hero-kpi:last-child { border-right: none; }
+
+    .hero-kpi-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      color: var(--or);
+      line-height: 1;
+      display: block;
+    }
+
+    .hero-kpi-lbl {
+      font-size: 10px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 4px;
+      display: block;
+    }
+
+    .hero-ctas {
+      display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+      animation: fadeUp 0.8s ease 0.4s both;
+    }
+
+    .btn-gold {
+      display: inline-block;
+      background: var(--or); color: var(--bleu2);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700; font-size: 16px;
+      padding: 18px 44px; border-radius: 2px;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 8px 32px rgba(201,168,76,0.3);
+      letter-spacing: 0.02em;
+    }
+    .btn-gold:hover {
+      background: var(--or2);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 44px rgba(201,168,76,0.45);
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.7);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500; font-size: 15px;
+      padding: 18px 36px; border-radius: 2px;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-ghost:hover {
+      border-color: var(--or);
+      color: var(--or);
+    }
+
+    .hero-date {
+      margin-top: 28px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.1em;
+      animation: fadeUp 0.8s ease 0.5s both;
+    }
+
+    /* ===== ACCROCHE ===== */
+    .accroche {
+      background: var(--or);
+      padding: 64px 24px;
+      text-align: center;
+    }
+
+    .accroche-inner { max-width: 760px; margin: 0 auto; }
+
+    .accroche h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4vw, 52px);
+      font-weight: 700;
+      color: var(--bleu2);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .accroche p {
+      font-size: 16px;
+      color: rgba(14,33,71,0.7);
+      line-height: 1.8;
+      max-width: 600px;
+      margin: 0 auto 20px;
+    }
+
+    .accroche-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(20px, 3vw, 30px);
+      font-style: italic;
+      font-weight: 600;
+      color: var(--bleu2);
+      border-top: 1px solid rgba(14,33,71,0.2);
+      padding-top: 20px;
+      margin-top: 20px;
+    }
+
+    /* ===== SECTION GÉNÉRIQUE ===== */
+    .sec {
+      padding: 80px 24px;
+      position: relative;
+    }
+
+    .sec-inner { max-width: 920px; margin: 0 auto; }
+
+    .sec-label {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--or); margin-bottom: 16px;
+      display: block;
+    }
+
+    .sec-titre {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 5vw, 60px);
+      font-weight: 700;
+      color: var(--blanc);
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .sec-titre em { color: var(--or); font-style: italic; }
+
+    .sec-sous {
+      font-size: 15px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+      max-width: 560px;
+      margin-bottom: 48px;
+    }
+
+    .gold-bar {
+      width: 48px; height: 2px;
+      background: var(--or);
+      margin: 20px 0 36px;
+    }
+
+    /* ===== FORMAT DU CONCOURS ===== */
+    .format-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      margin-bottom: 40px;
+    }
+
+    .format-bloc {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(201,168,76,0.15);
+      padding: 28px 20px;
+      text-align: center;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .format-bloc:hover {
+      border-color: rgba(201,168,76,0.4);
+      background: rgba(201,168,76,0.05);
+    }
+
+    .format-time {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px; font-weight: 700;
+      color: var(--or); line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .format-lbl {
+      font-size: 11px; color: rgba(255,255,255,0.45);
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    /* Note vote */
+    .vote-note {
+      background: rgba(201,168,76,0.07);
+      border: 1px solid rgba(201,168,76,0.2);
+      padding: 16px 24px;
+      display: flex; align-items: center; gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .vote-badge {
+      background: var(--or); color: var(--bleu2);
+      font-size: 11px; font-weight: 700;
+      padding: 4px 12px; white-space: nowrap;
+      letter-spacing: 0.08em;
+    }
+
+    .vote-txt {
+      font-size: 14px; color: rgba(255,255,255,0.65);
+    }
+
+    /* ===== CATÉGORIES ===== */
+    .cats-bg { background: var(--bleu); }
+
+    .cats-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .cat-card {
+      background: rgba(255,255,255,0.04);
+      border: 1.5px solid rgba(201,168,76,0.15);
+      padding: 28px 18px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .cat-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--or);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .cat-card:hover {
+      border-color: rgba(201,168,76,0.4);
+      background: rgba(201,168,76,0.06);
+      transform: translateY(-3px);
+    }
+
+    .cat-card:hover::before { transform: scaleX(1); }
+
+    .cat-emoji { font-size: 28px; margin-bottom: 14px; display: block; }
+
+    .cat-nom {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px; font-weight: 700;
+      color: var(--or); line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .cat-desc {
+      font-size: 12px; color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+    }
+
+    /* ===== PRIX ===== */
+    .prix-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .prix-row {
+      display: grid;
+      grid-template-columns: 60px 1fr auto;
+      gap: 20px;
+      align-items: center;
+      padding: 20px 24px;
+      border: 1.5px solid rgba(201,168,76,0.15);
+      background: rgba(255,255,255,0.02);
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .prix-row::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--or);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .prix-row:hover {
+      background: rgba(201,168,76,0.05);
+      border-color: rgba(201,168,76,0.35);
+    }
+
+    .prix-row:hover::before { opacity: 1; }
+
+    .prix-row:first-child {
+      border-color: rgba(201,168,76,0.4);
+      background: rgba(201,168,76,0.06);
+      padding: 28px 24px;
+    }
+
+    .prix-row:first-child::before { opacity: 1; }
+
+    .prix-emoji { font-size: 32px; text-align: center; }
+
+    .prix-info {}
+
+    .prix-nom {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--or); margin-bottom: 4px;
+    }
+
+    .prix-detail {
+      font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5;
+    }
+
+    .prix-montant {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px; font-weight: 700;
+      color: var(--blanc); text-align: right;
+      white-space: nowrap;
+    }
+
+    .prix-note {
+      margin-top: 20px;
+      padding: 14px 20px;
+      background: rgba(255,255,255,0.03);
+      border-left: 2px solid var(--or);
+      font-size: 13px; color: rgba(255,255,255,0.5); font-style: italic;
+    }
+
+    /* ===== ÉTAPES ===== */
+    .etapes-bg { background: var(--bleu); }
+
+    .etapes-list {
+      display: flex; flex-direction: column; gap: 0;
+      position: relative;
+    }
+
+    .etapes-list::before {
+      content: '';
+      position: absolute; left: 28px; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--or), rgba(201,168,76,0.1));
+    }
+
+    .etape {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 24px;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      position: relative;
+    }
+
+    .etape:last-child { border-bottom: none; }
+
+    .etape-num {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--bleu2);
+      border: 2px solid var(--or);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-weight: 700;
+      color: var(--or);
+      flex-shrink: 0;
+      position: relative; z-index: 1;
+    }
+
+    .etape-content {}
+
+    .etape-titre {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-weight: 700;
+      color: var(--blanc); margin-bottom: 6px;
+    }
+
+    .etape-desc {
+      font-size: 14px; color: rgba(255,255,255,0.5);
+      line-height: 1.7;
+    }
+
+    /* ===== JURY ===== */
+    .jury-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .jury-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(201,168,76,0.15);
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    .jury-icon { font-size: 32px; margin-bottom: 14px; }
+
+    .jury-role {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--or); margin-bottom: 8px;
+    }
+
+    .jury-nom {
+      font-size: 13px; color: rgba(255,255,255,0.4);
+      font-style: italic;
+    }
+
+    /* Critères */
+    .criteres-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 36px;
+    }
+
+    .critere {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 20px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(201,168,76,0.1);
+    }
+
+    .critere-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px; font-weight: 700;
+      color: rgba(201,168,76,0.25);
+      line-height: 1; flex-shrink: 0;
+    }
+
+    .critere-info {}
+    .critere-nom {
+      font-size: 14px; font-weight: 700;
+      color: var(--or); margin-bottom: 4px;
+    }
+    .critere-desc { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.5; }
+
+    /* ===== PITCH DAY 2027 ===== */
+    .pd2027 {
+      background: linear-gradient(135deg, #0e2147 0%, #1a1040 100%);
+      padding: 72px 24px;
+      position: relative; overflow: hidden;
+    }
+
+    .pd2027::before {
+      content: '2027';
+      position: absolute; right: -20px; top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 280px; color: rgba(201,168,76,0.04);
+      line-height: 1; pointer-events: none;
+      user-select: none;
+    }
+
+    .pd2027-inner {
+      max-width: 800px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 48px; align-items: center;
+      position: relative; z-index: 1;
+    }
+
+    .pd2027-left {}
+
+    .pd2027-tag {
+      display: inline-block;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--violet);
+      border: 1px solid rgba(108,52,131,0.4);
+      padding: 4px 14px; margin-bottom: 16px;
+    }
+
+    .pd2027-titre {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 700; color: var(--blanc);
+      line-height: 1.1; margin-bottom: 14px;
+    }
+
+    .pd2027-titre span { color: var(--or); font-style: italic; }
+
+    .pd2027-desc {
+      font-size: 14px; color: rgba(255,255,255,0.5);
+      line-height: 1.7;
+    }
+
+    .pd2027-right {
+      display: flex; flex-direction: column; gap: 12px;
+    }
+
+    .pd-compare {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 20px 22px;
+      position: relative;
+    }
+
+    .pd-compare.gold {
+      border-color: rgba(201,168,76,0.3);
+      background: rgba(201,168,76,0.05);
+    }
+
+    .pd-compare-label {
+      font-size: 9px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--or); margin-bottom: 8px;
+    }
+
+    .pd-compare-event {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px; font-weight: 700;
+      color: var(--blanc); margin-bottom: 4px;
+    }
+
+    .pd-compare-detail {
+      font-size: 12px; color: rgba(255,255,255,0.4);
+    }
+
+    /* ===== CTA FINAL ===== */
+    .cta-final {
+      background: var(--bleu2);
+      padding: 96px 24px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+
+    .cta-final::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,168,76,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .cta-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+
+    .cta-pre {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--or); margin-bottom: 20px; display: block;
+    }
+
+    .cta-titre {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 700; color: var(--blanc);
+      line-height: 1.1; margin-bottom: 14px;
+    }
+
+    .cta-titre em { color: var(--or); font-style: italic; }
+
+    .cta-sous {
+      font-size: 16px; color: rgba(255,255,255,0.45);
+      line-height: 1.7; margin-bottom: 40px;
+    }
+
+    .cta-deadline {
+      display: inline-block;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 10px 24px;
+      font-size: 12px; color: rgba(255,255,255,0.4);
+      letter-spacing: 0.1em; margin-top: 20px;
+    }
+
+    .cta-securite {
+      font-size: 11px; color: rgba(255,255,255,0.2);
+      margin-top: 16px; letter-spacing: 0.08em;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #060d1a;
+      padding: 36px 24px;
+      text-align: center;
+      border-top: 1px solid rgba(201,168,76,0.1);
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px; font-weight: 700;
+      color: var(--blanc); margin-bottom: 8px;
+    }
+
+    .footer-logo span { color: var(--or); font-style: italic; }
+
+    .footer-links {
+      display: flex; gap: 20px; justify-content: center;
+      flex-wrap: wrap; margin: 12px 0;
+    }
+
+    .footer-links a {
+      font-size: 12px; color: rgba(255,255,255,0.3);
+      text-decoration: none; transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--or); }
+
+    .footer-copy {
+      font-size: 11px; color: rgba(255,255,255,0.15);
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.vis { opacity: 1; transform: translateY(0); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 860px) {
+      .cats-grid { grid-template-columns: repeat(3, 1fr); }
+      .format-grid { grid-template-columns: repeat(2, 1fr); }
+      .pd2027-inner { grid-template-columns: 1fr; gap: 32px; }
+      .pd2027::before { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .hero-kpis { flex-direction: column; border: none; gap: 0; }
+      .hero-kpi { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.15); }
+      .hero-kpi:last-child { border-bottom: none; }
+      .cats-grid { grid-template-columns: 1fr 1fr; }
+      .prix-row { grid-template-columns: 48px 1fr; }
+      .prix-montant { display: none; }
+      .jury-grid { grid-template-columns: 1fr; }
+      .criteres-grid { grid-template-columns: 1fr; }
+      .hero-ctas { flex-direction: column; align-items: center; }
+    }
+
+    @media (max-width: 480px) {
+      .cats-grid { grid-template-columns: 1fr; }
+      .etapes-list::before { display: none; }
+      .format-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- STICKY BAR -->
+  <div class="sbar" id="sbar">
+    <span class="sbar-txt"><strong>Pitcher Hybride et Fier·e</strong> · 17 octobre 2026 · Québec City</span>
+    <a href="https://forms.gle/8rDEM8koAgwgXNYg9" target="_blank" class="sbar-btn">Soumettre ma candidature</a>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow">🎤 Concours de Pitch · Forum Innov'Action 2026</div>
+      <div class="hero-micro">Samedi 17 octobre 2026 · Québec City</div>
+      <h1 class="hero-titre">
+        <span class="line1">Pitcher</span>
+        <span class="line2">Hybride</span>
+        <span class="line3">et Fier·e</span>
+      </h1>
+      <p class="hero-tagline">
+        « Et si tu avais 3 minutes pour tout changer ? »
+      </p>
+
+      <div class="hero-kpis">
+        <div class="hero-kpi">
+          <span class="hero-kpi-num">3 min</span>
+          <span class="hero-kpi-lbl">Pour pitcher</span>
+        </div>
+        <div class="hero-kpi">
+          <span class="hero-kpi-num">5</span>
+          <span class="hero-kpi-lbl">Prix à remporter</span>
+        </div>
+        <div class="hero-kpi">
+          <span class="hero-kpi-num">100</span>
+          <span class="hero-kpi-lbl">Ambassadeurs dans la salle</span>
+        </div>
+        <div class="hero-kpi">
+          <span class="hero-kpi-num">10–12</span>
+          <span class="hero-kpi-lbl">Pitcheurs sélectionnés</span>
+        </div>
+      </div>
+
+      <div class="hero-ctas">
+        <a href="https://forms.gle/8rDEM8koAgwgXNYg9" target="_blank" class="btn-gold">→ Soumettre ma candidature</a>
+        <a href="#comment" class="btn-ghost">Comment ça marche ?</a>
+      </div>
+
+      <p class="hero-date">📍 La Scène Lebourgneuf · 825, Boul. Lebourgneuf, Bureau 200 · Québec City G2J 0C1</p>
+    </div>
+  </section>
+
+  <!-- ===== ACCROCHE ===== -->
+  <section class="accroche">
+    <div class="accroche-inner">
+      <h2>Tu as un projet. Une idée. Une histoire.<br>Il est temps que le Québec l'entende.</h2>
+      <p>3 minutes pour pitcher ton projet devant une salle remplie d'entrepreneurs qui te comprennent. Devant des jurés qui ont construit quelque chose. Devant une communauté qui sait ce que ça coûte de bâtir en étant plusieurs à la fois.</p>
+      <p>Ce n'est pas un Dragon's Den où on te juge froidement. C'est une scène où tu assumes — enfin — tout ce que tu es et tout ce que tu bâtis.</p>
+      <div class="accroche-quote">Ce concours ne cherche pas le projet le plus parfait.<br>Il cherche l'entrepreneur·e le plus authentique.</div>
+    </div>
+  </section>
+
+  <!-- ===== FORMAT ===== -->
+  <section class="sec" style="background: var(--bleu2);">
+    <div class="sec-inner">
+      <span class="sec-label reveal">Le concours</span>
+      <h2 class="sec-titre reveal">Le format <em>Pitcher Hybride</em></h2>
+      <div class="gold-bar reveal"></div>
+
+      <div class="format-grid reveal">
+        <div class="format-bloc">
+          <div class="format-time">15h30</div>
+          <div class="format-lbl">Début du concours</div>
+        </div>
+        <div class="format-bloc">
+          <div class="format-time">3 min</div>
+          <div class="format-lbl">Durée de chaque pitch</div>
+        </div>
+        <div class="format-bloc">
+          <div class="format-time">2 min</div>
+          <div class="format-lbl">Questions du jury</div>
+        </div>
+        <div class="format-bloc">
+          <div class="format-time">16h45</div>
+          <div class="format-lbl">Remise des prix</div>
+        </div>
+      </div>
+
+      <div class="vote-note reveal">
+        <span class="vote-badge">Notation</span>
+        <span class="vote-txt">Jury indépendant <strong style="color:var(--or)">60%</strong> + Vote du public — les 100 ambassadeurs dans la salle — <strong style="color:var(--or)">40%</strong>. Les deux comptent.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CATÉGORIES ===== -->
+  <section class="sec cats-bg">
+    <div class="sec-inner">
+      <span class="sec-label reveal">Les 5 catégories</span>
+      <h2 class="sec-titre reveal">Dans quelle catégorie <em>concourras-tu ?</em></h2>
+      <div class="gold-bar reveal"></div>
+
+      <div class="cats-grid reveal">
+        <div class="cat-card">
+          <span class="cat-emoji">🌱</span>
+          <div class="cat-nom">Le Projet Naissant</div>
+          <div class="cat-desc">Ton idée est en phase de validation, moins d'un an d'existence. Tu poses les premières pierres.</div>
+        </div>
+        <div class="cat-card">
+          <span class="cat-emoji">🚀</span>
+          <div class="cat-nom">L'Entreprise en Envol</div>
+          <div class="cat-desc">Projet lancé, premiers clients, premiers revenus. Entre 1 et 3 ans. Tu cherches à accélérer.</div>
+        </div>
+        <div class="cat-card">
+          <span class="cat-emoji">📈</span>
+          <div class="cat-nom">Le Modèle en Croissance</div>
+          <div class="cat-desc">Business structuré, revenus réguliers, modèle prouvé. 3 ans et plus. Tu veux scaler.</div>
+        </div>
+        <div class="cat-card">
+          <span class="cat-emoji">💚</span>
+          <div class="cat-nom">L'Innovation à Impact</div>
+          <div class="cat-desc">Vocation sociale, environnementale ou communautaire. L'impact est au cœur de ta mission.</div>
+        </div>
+        <div class="cat-card">
+          <span class="cat-emoji">🔄</span>
+          <div class="cat-nom">Le Pivot Courageux</div>
+          <div class="cat-desc">Reconversion ou transformation majeure. Tu as eu le courage de recommencer. C'est cette audace qu'on célèbre.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRIX ===== -->
+  <section class="sec" style="background: var(--bleu2);">
+    <div class="sec-inner">
+      <span class="sec-label reveal">Les 5 prix</span>
+      <h2 class="sec-titre reveal">Ce que tu peux <em>remporter</em></h2>
+      <div class="gold-bar reveal"></div>
+
+      <div class="prix-grid reveal">
+        <div class="prix-row">
+          <div class="prix-emoji">🥇</div>
+          <div class="prix-info">
+            <div class="prix-nom">Prix Hybride d'Or</div>
+            <div class="prix-detail">500 $ + 1 mois de coaching individuel</div>
+          </div>
+          <div class="prix-montant">500 $</div>
+        </div>
+        <div class="prix-row">
+          <div class="prix-emoji">🥈</div>
+          <div class="prix-info">
+            <div class="prix-nom">Prix Impact</div>
+            <div class="prix-detail">300 $ + 1 mois d'accès au programme Inébranlable</div>
+          </div>
+          <div class="prix-montant">300 $</div>
+        </div>
+        <div class="prix-row">
+          <div class="prix-emoji">🥉</div>
+          <div class="prix-info">
+            <div class="prix-nom">Prix Innovation</div>
+            <div class="prix-detail">200 $ + 1 séance stratégie avec Mattia</div>
+          </div>
+          <div class="prix-montant">200 $</div>
+        </div>
+        <div class="prix-row">
+          <div class="prix-emoji">🎤</div>
+          <div class="prix-info">
+            <div class="prix-nom">Prix Coup de Cœur du Public</div>
+            <div class="prix-detail">150 $ + visibilité médias Forum Innov'Action</div>
+          </div>
+          <div class="prix-montant">150 $</div>
+        </div>
+        <div class="prix-row">
+          <div class="prix-emoji">🌟</div>
+          <div class="prix-info">
+            <div class="prix-nom">Prix Ambassadeur de l'Année</div>
+            <div class="prix-detail">100 $ + titre officiel + invitation VIP Pitch Day 2027</div>
+          </div>
+          <div class="prix-montant">100 $</div>
+        </div>
+      </div>
+
+      <div class="prix-note reveal">
+        Et au-delà des prix : 100 entrepreneurs dans la salle qui t'ont vu, t'ont entendu, et qui savent maintenant que tu existes.
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROCESSUS ===== -->
+  <section class="sec etapes-bg" id="comment">
+    <div class="sec-inner">
+      <span class="sec-label reveal">Comment candidater</span>
+      <h2 class="sec-titre reveal">5 étapes <em>simples</em></h2>
+      <div class="gold-bar reveal"></div>
+
+      <div class="etapes-list reveal">
+        <div class="etape">
+          <div class="etape-num">1</div>
+          <div class="etape-content">
+            <div class="etape-titre">Complète le formulaire en ligne</div>
+            <div class="etape-desc">Informations personnelles, identité hybride, description de ton projet, résumé de ton pitch et motivations. 9 pages — mais chaque question compte.</div>
+          </div>
+        </div>
+        <div class="etape">
+          <div class="etape-num">2</div>
+          <div class="etape-content">
+            <div class="etape-titre">Notre équipe examine les candidatures</div>
+            <div class="etape-desc">Toutes les candidatures sont examinées selon les critères d'éligibilité et la diversité des catégories. 10 à 12 pitcheurs sont sélectionnés.</div>
+          </div>
+        </div>
+        <div class="etape">
+          <div class="etape-num">3</div>
+          <div class="etape-content">
+            <div class="etape-titre">Tu reçois ta confirmation</div>
+            <div class="etape-desc">Si tu es sélectionné·e, tu reçois un courriel avec les instructions pour la 2e étape : une courte vidéo de présentation (1 à 2 minutes).</div>
+          </div>
+        </div>
+        <div class="etape">
+          <div class="etape-num">4</div>
+          <div class="etape-content">
+            <div class="etape-titre">Tu enregistres ta vidéo</div>
+            <div class="etape-desc">Depuis ton téléphone, sans production élaborée. L'authenticité prime sur la perfection. Qui tu es, ton projet en une phrase, pourquoi tu veux pitcher.</div>
+          </div>
+        </div>
+        <div class="etape">
+          <div class="etape-num">5</div>
+          <div class="etape-content">
+            <div class="etape-titre">Tu pitches le 17 octobre</div>
+            <div class="etape-desc">3 minutes. Devant 100 ambassadeurs et le jury. Ton histoire. Ta vision. Ta fierté. C'est tout ce qu'il faut.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 40px; padding: 20px 24px; background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.2);" class="reveal">
+        <div style="font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 8px;">✅ <strong style="color: var(--blanc)">Qui peut candidater :</strong> Tout entrepreneur·e hybride du Canada francophone — inscrit·e au Forum ou non.</div>
+        <div style="font-size: 13px; color: rgba(255,255,255,0.6);">📅 <strong style="color: var(--blanc)">Date limite :</strong> À confirmer par Mattia · Les candidatures sont traitées par ordre d'arrivée.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== JURY ===== -->
+  <section class="sec" style="background: var(--bleu);">
+    <div class="sec-inner">
+      <span class="sec-label reveal">Le jury</span>
+      <h2 class="sec-titre reveal">Trois regards <em>d'experts</em></h2>
+      <p class="sec-sous reveal">Jury indépendant (60%) + Vote du public (40%). Les 4 critères d'évaluation.</p>
+      <div class="gold-bar reveal"></div>
+
+      <div class="jury-grid reveal">
+        <div class="jury-card">
+          <div class="jury-icon">⚖️</div>
+          <div class="jury-role">Expert Finances</div>
+          <div class="jury-nom">Nom à confirmer</div>
+        </div>
+        <div class="jury-card">
+          <div class="jury-icon">⚖️</div>
+          <div class="jury-role">Expert Développement d'affaires</div>
+          <div class="jury-nom">Nom à confirmer</div>
+        </div>
+        <div class="jury-card">
+          <div class="jury-icon">⚖️</div>
+          <div class="jury-role">Expert Innovation</div>
+          <div class="jury-nom">Nom à confirmer</div>
+        </div>
+      </div>
+
+      <div class="criteres-grid reveal">
+        <div class="critere">
+          <div class="critere-num">01</div>
+          <div class="critere-info">
+            <div class="critere-nom">Clarté</div>
+            <div class="critere-desc">Le projet est-il compris en 3 minutes ?</div>
+          </div>
+        </div>
+        <div class="critere">
+          <div class="critere-num">02</div>
+          <div class="critere-info">
+            <div class="critere-nom">Impact hybride</div>
+            <div class="critere-desc">Le pitch incarne-t-il une identité d'entrepreneur hybride assumée ?</div>
+          </div>
+        </div>
+        <div class="critere">
+          <div class="critere-num">03</div>
+          <div class="critere-info">
+            <div class="critere-nom">Viabilité</div>
+            <div class="critere-desc">Y a-t-il un vrai modèle derrière ?</div>
+          </div>
+        </div>
+        <div class="critere">
+          <div class="critere-num">04</div>
+          <div class="critere-info">
+            <div class="critere-nom">Énergie & authenticité</div>
+            <div class="critere-desc">Le pitcheur assume-t-il qui il est ?</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PITCH DAY 2027 ===== -->
+  <section class="pd2027">
+    <div class="pd2027-inner">
+      <div class="pd2027-left reveal">
+        <span class="pd2027-tag">🚀 Un avant-goût du futur</span>
+        <h2 class="pd2027-titre">Le <span>Pitch Day 2027</span><br>t'attend déjà.</h2>
+        <p class="pd2027-desc">Le concours du Forum 2026 n'est que le début. Les meilleurs pitcheurs seront invités en priorité au Pitch Day 2027 — le 22 mars à Québec City. Un événement entier dédié au pitch, avec 150 participants, 3 sessions de préparation, et une scène encore plus grande.<br><br>Pitcher au Forum 2026, c'est potentiellement décrocher ta place sur la scène du Pitch Day 2027.</p>
+      </div>
+      <div class="pd2027-right reveal">
+        <div class="pd-compare gold">
+          <div class="pd-compare-label">Forum 2026 · 17 octobre</div>
+          <div class="pd-compare-event">Concours Pitcher Hybride et Fier·e</div>
+          <div class="pd-compare-detail">100 participants · 5 prix · 10–12 pitcheurs · Avant-goût</div>
+        </div>
+        <div style="text-align: center; color: rgba(255,255,255,0.2); font-size: 20px;">↓</div>
+        <div class="pd-compare">
+          <div class="pd-compare-label">Pitch Day 2027 · 22 mars</div>
+          <div class="pd-compare-event">Grand rendez-vous annuel</div>
+          <div class="pd-compare-detail">150 participants · 3 sessions prep · Scène principale · Québec City</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA FINAL ===== -->
+  <section class="cta-final">
+    <div class="cta-inner">
+      <span class="cta-pre reveal">Le bon moment, c'est maintenant.</span>
+      <h2 class="cta-titre reveal">Arrête de te justifier.<br><em>Commence à rayonner.</em></h2>
+      <p class="cta-sous reveal">Tu n'es peut-être pas sûr·e que ton projet est "assez bien". Peut-être que tu te demandes si tu es "assez prêt·e". C'est exactement pour ça que ce concours existe.</p>
+      <div class="reveal">
+        <a href="https://forms.gle/8rDEM8koAgwgXNYg9" target="_blank" class="btn-gold" style="font-size: 18px; padding: 20px 56px;">
+          → Soumettre ma candidature
+        </a>
+      </div>
+      <div class="cta-deadline reveal">📅 Samedi 17 octobre 2026 · La Scène Lebourgneuf · Québec City</div>
+      <p class="cta-securite reveal">Ouvert à tout entrepreneur·e hybride du Canada francophone · Inscrit·e au Forum ou non</p>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-logo">Forum <span>Innov'Action</span> 2026</div>
+    <div class="footer-links">
+      <a href="forum-innovaction-2026.html">← Retour à la page du Forum</a>
+      <a href="mailto:contact@mgbusinessgroups.com">Contact</a>
+      <a href="#">Politique de confidentialité</a>
+    </div>
+    <div class="footer-copy">© 2026 MG Business Group Inc. · contact@mgbusinessgroups.com · www.foruminnov.ca</div>
+  </footer>
+
+  <script>
+    // Sticky bar
+    window.addEventListener('scroll', () => {
+      document.getElementById('sbar').classList.toggle('show', window.scrollY > 500);
+    });
+
+    // Reveal au scroll
+    const reveals = document.querySelectorAll('.reveal');
+    new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+    }, { threshold: 0.08 }).observe
+    ? new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }).observe(reveals[0] ?? document.body)
+    : null;
+
+    // Observer chaque élément
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
