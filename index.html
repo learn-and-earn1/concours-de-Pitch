@@ -774,21 +774,192 @@
       .etapes-list::before { display: none; }
       .format-grid { grid-template-columns: repeat(2, 1fr); }
     }
+  
+/* ======== EFFETS BOUTONS PREMIUM — CONCOURS ======== */
+
+/* Bouton or principal — shimmer */
+.btn-gold {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+.btn-gold:hover::before { left: 150%; }
+.btn-gold:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 16px 48px rgba(201,168,76,0.55) !important;
+}
+
+/* Bouton ghost */
+.btn-ghost {
+  transition: all 0.3s ease !important;
+}
+
+.btn-ghost:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(201,168,76,0.2);
+}
+
+/* Bouton sticky */
+.sbar-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease !important;
+}
+
+.sbar-btn::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.25) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.sbar-btn:hover::after { transform: translateX(100%); }
+.sbar-btn:hover { transform: scale(1.04); }
+
+/* CTA final — pulse */
+.ed-cta-btn {
+  position: relative;
+  overflow: hidden;
+  animation: goldPulse 3s ease-in-out infinite;
+}
+
+@keyframes goldPulse {
+  0%, 100% { box-shadow: 0 8px 32px rgba(201,168,76,0.25); }
+  50% { box-shadow: 0 8px 44px rgba(201,168,76,0.55); }
+}
+
+.ed-cta-btn::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.25) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.ed-cta-btn:hover::before { transform: translateX(100%); }
+.ed-cta-btn:hover {
+  transform: translateY(-3px) !important;
+  animation: none;
+  box-shadow: 0 16px 48px rgba(201,168,76,0.6) !important;
+}
+
+  
+/* ======== EFFETS VISUELS PERMANENTS — CONCOURS ======== */
+.btn-gold {
+  background: linear-gradient(135deg, #C9A84C 0%, #e8c96a 40%, #C9A84C 70%, #b8943d 100%) !important;
+  background-size: 200% 200% !important;
+  animation: goldShift 3s ease infinite, vipGlow 2s ease-in-out infinite !important;
+  color: var(--bleu2) !important;
+}
+
+@keyframes goldShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes vipGlow {
+  0%, 100% { box-shadow: 0 4px 24px rgba(201,168,76,0.4), 0 0 24px rgba(201,168,76,0.15); }
+  50% { box-shadow: 0 6px 36px rgba(201,168,76,0.7), 0 0 44px rgba(201,168,76,0.3); }
+}
+
+.btn-gold:hover {
+  transform: translateY(-3px) scale(1.02) !important;
+  filter: brightness(1.1) !important;
+}
+
+.ed-cta-btn {
+  background: linear-gradient(135deg, #C9A84C 0%, #e8c96a 40%, #C9A84C 70%, #b8943d 100%) !important;
+  background-size: 200% 200% !important;
+  animation: goldShift 3s ease infinite, vipGlow 2s ease-in-out infinite !important;
+  color: var(--bleu2) !important;
+}
+
+.sbar-btn {
+  background: linear-gradient(135deg, #C9A84C, #dab84e, #C9A84C) !important;
+  background-size: 200% 200% !important;
+  animation: goldShift 3s ease infinite !important;
+}
+
+  
+/* ======== BOUTON CANDIDATURE REMARQUABLE ======== */
+.btn-gold {
+  background: linear-gradient(135deg, #fff 0%, #fff8e7 40%, #fff 100%) !important;
+  color: #0e2147 !important;
+  font-weight: 800 !important;
+  border: 3px solid #fff !important;
+  box-shadow: 0 0 0 0 rgba(255,255,255,0.7), 0 6px 32px rgba(0,0,0,0.3) !important;
+  animation: goldBtnPulse 2s ease-in-out infinite !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.btn-gold::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(201,168,76,0.12) 50%, transparent 70%);
+  background-size: 200% 100%;
+  animation: goldScan 2s linear infinite;
+}
+
+@keyframes goldScan {
+  0% { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes goldBtnPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255,255,255,0.5), 0 6px 32px rgba(0,0,0,0.3);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(255,255,255,0), 0 8px 44px rgba(0,0,0,0.35);
+    transform: scale(1.02);
+  }
+}
+
+.btn-gold:hover {
+  background: #fff !important;
+  transform: translateY(-3px) scale(1.03) !important;
+  animation: none !important;
+}
+
+/* CTA final aussi */
+.ed-cta-btn {
+  background: linear-gradient(135deg, #fff 0%, #fff8e7 40%, #fff 100%) !important;
+  color: #0e2147 !important;
+  font-weight: 800 !important;
+  border: 3px solid rgba(255,255,255,0.8) !important;
+  animation: goldBtnPulse 2s ease-in-out infinite !important;
+}
+
   </style>
 </head>
 <body>
 
   <!-- STICKY BAR -->
   <div class="sbar" id="sbar">
-    <span class="sbar-txt"><strong>Pitcher Hybride et Fier·e</strong> · 17 octobre 2026 · Québec City</span>
-    <a href="https://forms.gle/8rDEM8koAgwgXNYg9" target="_blank" class="sbar-btn">Soumettre ma candidature</a>
+    <span class="sbar-txt"><strong>Pitcher Hybride et Fier·e</strong> · samedi 24 octobre 2026 · Québec City</span>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdUnqP32V0VsMTYxXKg-zEjMjKaG6sfesnsfz7jGOCqa4HQmg/viewform" target="_blank" class="sbar-btn">Soumettre ma candidature</a>
   </div>
 
   <!-- ===== HERO ===== -->
   <section class="hero">
     <div class="hero-content">
       <div class="hero-eyebrow">🎤 Concours de Pitch · Forum Innov'Action 2026</div>
-      <div class="hero-micro">Samedi 17 octobre 2026 · Québec City</div>
+      <div class="hero-micro">Samedi samedi 24 octobre 2026 · Québec City</div>
       <h1 class="hero-titre">
         <span class="line1">Pitcher</span>
         <span class="line2">Hybride</span>
@@ -818,7 +989,7 @@
       </div>
 
       <div class="hero-ctas">
-        <a href="https://forms.gle/8rDEM8koAgwgXNYg9" target="_blank" class="btn-gold">→ Soumettre ma candidature</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdUnqP32V0VsMTYxXKg-zEjMjKaG6sfesnsfz7jGOCqa4HQmg/viewform" target="_blank" class="btn-gold">→ Soumettre ma candidature</a>
         <a href="#comment" class="btn-ghost">Comment ça marche ?</a>
       </div>
 
@@ -1008,7 +1179,7 @@
       </div>
 
       <div style="margin-top: 40px; padding: 20px 24px; background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.2);" class="reveal">
-        <div style="font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 8px;">✅ <strong style="color: var(--blanc)">Qui peut candidater :</strong> Tout entrepreneur·e hybride du Canada francophone — inscrit·e au Forum ou non.<br><span style="font-size:13px;color:rgba(255,255,255,0.6);">💰 <strong style="color:var(--blanc);">Frais de participation : 99 $</strong> — payables <em>uniquement si ta candidature est retenue</em>. La soumission du formulaire est entièrement gratuite.</span></div>
+        <div style="font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 8px;">✅ <strong style="color: var(--blanc)">Qui peut candidater :</strong> Tout entrepreneur·e hybride du Canada francophone — inscrit·e au Forum ou non.<br><span style="font-size:13px;color:rgba(255,255,255,0.6);">💰 <strong style="color:var(--blanc);">Frais de participation : 55 $</strong> — payables <em>uniquement si ta candidature est retenue</em>. La soumission du formulaire est entièrement gratuite.</span></div>
         <div style="font-size: 13px; color: rgba(255,255,255,0.6);">📅 <strong style="color: var(--blanc)">Date limite :</strong> Mi-septembre 2026 · Les candidatures sont traitées par ordre d'arrivée.</div>
       </div>
     </div>
@@ -1110,11 +1281,11 @@
       <h2 class="cta-titre reveal">Arrête de te justifier.<br><em>Commence à rayonner.</em></h2>
       <p class="cta-sous reveal">Tu n'es peut-être pas sûr·e que ton projet est "assez bien". Peut-être que tu te demandes si tu es "assez prêt·e". C'est exactement pour ça que ce concours existe.</p>
       <div class="reveal">
-        <a href="https://forms.gle/8rDEM8koAgwgXNYg9" target="_blank" class="btn-gold" style="font-size: 18px; padding: 20px 56px;">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdUnqP32V0VsMTYxXKg-zEjMjKaG6sfesnsfz7jGOCqa4HQmg/viewform" target="_blank" class="btn-gold" style="font-size: 18px; padding: 20px 56px;">
           → Soumettre ma candidature
         </a>
       </div>
-      <div class="cta-deadline reveal">📅 Samedi 17 octobre 2026 · La Scène Lebourgneuf · Québec City</div>
+      <div class="cta-deadline reveal">📅 Samedi samedi 24 octobre 2026 · La Scène Lebourgneuf · Québec City</div>
       <p class="cta-securite reveal">Ouvert à tout entrepreneur·e hybride du Canada francophone · Inscrit·e au Forum ou non</p>
     </div>
   </section>
